@@ -25,7 +25,7 @@ Add a markdown spec cell before each substantive code cell in a Jupyter notebook
    - **Inputs** — variables, files, or connections it expects to exist
    - **Outputs** — what it produces (variables, files, printed stats)
    - **Key decisions** — any non-obvious choices (why a column is excluded, why a threshold was chosen, what a filter removes)
-4. **Insert the markdown cell** immediately before the code cell in the notebook JSON
+4. **Insert the markdown cell** immediately before the code cell in the notebook JSON — the markdown cell index must be lower than the code cell index. Never append it after.
 5. **Write the updated notebook** back to disk
 
 ## Spec Format
