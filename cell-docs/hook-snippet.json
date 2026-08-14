@@ -2,11 +2,11 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Read",
+        "matcher": "NotebookEdit",
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // \"\"' | { read -r f; if [[ \"$f\" == *.ipynb ]]; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"You just read a Jupyter notebook. Invoke the cell-docs skill now to check for undocumented code cells and add spec cells where missing.\"}}'; fi; } 2>/dev/null || true"
+            "command": "jq -r 'if .tool_input.cell_type == \"code\" then \"{\\\"hookSpecificOutput\\\":{\\\"hookEventName\\\":\\\"PostToolUse\\\",\\\"additionalContext\\\":\\\"You just wrote a code cell to a notebook. Add a markdown spec cell immediately before it with What, Inputs, Outputs, and Key decisions bullets.\\\"}}\" else empty end' 2>/dev/null || true"
           }
         ]
       }
