@@ -30,7 +30,7 @@ cp cell-docs/SKILL.md ~/.claude/skills/cell-docs/SKILL.md
 
 **2. Add the hook to your settings (optional but recommended)**
 
-The hook automatically triggers cell-docs whenever you open a `.ipynb` file in Claude Code.
+The hook fires every time Claude writes a code cell to a notebook, reminding it to add the spec cell before the code. Only triggers on code cells, not markdown.
 
 Merge the contents of `cell-docs/hook-snippet.json` into your `~/.claude/settings.json` under the `"hooks"` key. If you already have a `PostToolUse` section, add this entry to the existing array.
 
